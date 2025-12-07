@@ -11,13 +11,15 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ProtectedRouteImport } from './routes/_protected'
 import { Route as AuthRouteImport } from './routes/_auth'
-import { Route as marketingIndexRouteImport } from './routes/(marketing)/index'
+import { Route as marketingMarketingRouteImport } from './routes/(marketing)/_marketing'
 import { Route as ProtectedAppIndexRouteImport } from './routes/_protected/app/index'
 import { Route as AuthLoginIndexRouteImport } from './routes/_auth/login/index'
 import { Route as ApiUploadCloudflareRouteImport } from './routes/api/upload/cloudflare'
 import { Route as ApiUploadBackblazeRouteImport } from './routes/api/upload/backblaze'
 import { Route as ApiRpcSplatRouteImport } from './routes/api/rpc/$'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
+import { Route as marketingMarketingAboutRouteRouteImport } from './routes/(marketing)/_marketing/about/route'
+import { Route as marketingMarketingIndexRouteRouteImport } from './routes/(marketing)/_marketing/index/route'
 
 const ProtectedRoute = ProtectedRouteImport.update({
   id: '/_protected',
@@ -27,9 +29,8 @@ const AuthRoute = AuthRouteImport.update({
   id: '/_auth',
   getParentRoute: () => rootRouteImport,
 } as any)
-const marketingIndexRoute = marketingIndexRouteImport.update({
-  id: '/(marketing)/',
-  path: '/',
+const marketingMarketingRoute = marketingMarketingRouteImport.update({
+  id: '/(marketing)/_marketing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProtectedAppIndexRoute = ProtectedAppIndexRouteImport.update({
@@ -62,9 +63,21 @@ const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   path: '/api/auth/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const marketingMarketingAboutRouteRoute =
+  marketingMarketingAboutRouteRouteImport.update({
+    id: '/about',
+    path: '/about',
+    getParentRoute: () => marketingMarketingRoute,
+  } as any)
+const marketingMarketingIndexRouteRoute =
+  marketingMarketingIndexRouteRouteImport.update({
+    id: '/',
+    path: '',
+    getParentRoute: () => marketingMarketingRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof marketingIndexRoute
+  '/about': typeof marketingMarketingAboutRouteRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/rpc/$': typeof ApiRpcSplatRoute
   '/api/upload/backblaze': typeof ApiUploadBackblazeRoute
@@ -73,7 +86,7 @@ export interface FileRoutesByFullPath {
   '/app': typeof ProtectedAppIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof marketingIndexRoute
+  '/about': typeof marketingMarketingAboutRouteRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/rpc/$': typeof ApiRpcSplatRoute
   '/api/upload/backblaze': typeof ApiUploadBackblazeRoute
@@ -85,7 +98,9 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_auth': typeof AuthRouteWithChildren
   '/_protected': typeof ProtectedRouteWithChildren
-  '/(marketing)/': typeof marketingIndexRoute
+  '/(marketing)/_marketing': typeof marketingMarketingRouteWithChildren
+  '/(marketing)/_marketing/': typeof marketingMarketingIndexRouteRoute
+  '/(marketing)/_marketing/about': typeof marketingMarketingAboutRouteRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/rpc/$': typeof ApiRpcSplatRoute
   '/api/upload/backblaze': typeof ApiUploadBackblazeRoute
@@ -96,7 +111,7 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
+    | '/about'
     | '/api/auth/$'
     | '/api/rpc/$'
     | '/api/upload/backblaze'
@@ -105,7 +120,7 @@ export interface FileRouteTypes {
     | '/app'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
+    | '/about'
     | '/api/auth/$'
     | '/api/rpc/$'
     | '/api/upload/backblaze'
@@ -116,7 +131,9 @@ export interface FileRouteTypes {
     | '__root__'
     | '/_auth'
     | '/_protected'
-    | '/(marketing)/'
+    | '/(marketing)/_marketing'
+    | '/(marketing)/_marketing/'
+    | '/(marketing)/_marketing/about'
     | '/api/auth/$'
     | '/api/rpc/$'
     | '/api/upload/backblaze'
@@ -128,7 +145,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   AuthRoute: typeof AuthRouteWithChildren
   ProtectedRoute: typeof ProtectedRouteWithChildren
-  marketingIndexRoute: typeof marketingIndexRoute
+  marketingMarketingRoute: typeof marketingMarketingRouteWithChildren
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
   ApiRpcSplatRoute: typeof ApiRpcSplatRoute
   ApiUploadBackblazeRoute: typeof ApiUploadBackblazeRoute
@@ -151,11 +168,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/(marketing)/': {
-      id: '/(marketing)/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof marketingIndexRouteImport
+    '/(marketing)/_marketing': {
+      id: '/(marketing)/_marketing'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof marketingMarketingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_protected/app/': {
@@ -200,6 +217,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAuthSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/(marketing)/_marketing/about': {
+      id: '/(marketing)/_marketing/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof marketingMarketingAboutRouteRouteImport
+      parentRoute: typeof marketingMarketingRoute
+    }
+    '/(marketing)/_marketing/': {
+      id: '/(marketing)/_marketing/'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof marketingMarketingIndexRouteRouteImport
+      parentRoute: typeof marketingMarketingRoute
+    }
   }
 }
 
@@ -225,10 +256,23 @@ const ProtectedRouteWithChildren = ProtectedRoute._addFileChildren(
   ProtectedRouteChildren,
 )
 
+interface marketingMarketingRouteChildren {
+  marketingMarketingIndexRouteRoute: typeof marketingMarketingIndexRouteRoute
+  marketingMarketingAboutRouteRoute: typeof marketingMarketingAboutRouteRoute
+}
+
+const marketingMarketingRouteChildren: marketingMarketingRouteChildren = {
+  marketingMarketingIndexRouteRoute: marketingMarketingIndexRouteRoute,
+  marketingMarketingAboutRouteRoute: marketingMarketingAboutRouteRoute,
+}
+
+const marketingMarketingRouteWithChildren =
+  marketingMarketingRoute._addFileChildren(marketingMarketingRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRouteWithChildren,
   ProtectedRoute: ProtectedRouteWithChildren,
-  marketingIndexRoute: marketingIndexRoute,
+  marketingMarketingRoute: marketingMarketingRouteWithChildren,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
   ApiRpcSplatRoute: ApiRpcSplatRoute,
   ApiUploadBackblazeRoute: ApiUploadBackblazeRoute,

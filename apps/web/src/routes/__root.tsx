@@ -13,6 +13,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { getUser } from "@/functions/get-user";
 import type { orpc } from "@/utils/orpc";
 import appCss from "../index.css?url";
+
 export interface RouterAppContext {
 	orpc: typeof orpc;
 	queryClient: QueryClient;
@@ -58,7 +59,7 @@ function RootDocument() {
 			</head>
 			<body>
 				<Outlet />
-				<Toaster />
+				<Toaster position="top-center" />
 				<TanStackRouterDevtools position="bottom-left" />
 				<ReactQueryDevtools position="bottom" buttonPosition="bottom-right" />
 				<Scripts />

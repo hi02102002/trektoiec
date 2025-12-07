@@ -43,6 +43,12 @@ export const env = createEnv({
 		 * DATABASE
 		 */
 		DATABASE_URL: z.string().min(1),
+
+		/**
+		 * GOOGLE
+		 */
+		GOOGLE_CLIENT_ID: z.string().min(1),
+		GOOGLE_CLIENT_SECRET: z.string().min(1),
 	},
 	clientPrefix: "VITE_",
 	client: {},

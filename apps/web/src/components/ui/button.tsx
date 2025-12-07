@@ -46,6 +46,7 @@ export type ButtonProps = React.ComponentPropsWithoutRef<"button"> &
 			icon?: string;
 			spinner?: string;
 		};
+		ref?: React.Ref<HTMLButtonElement>;
 	};
 
 function Button({

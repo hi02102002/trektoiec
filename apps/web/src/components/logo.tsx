@@ -19,7 +19,10 @@ export const Logo = ({ className, classNames }: LogoProps) => {
 			)}
 		>
 			<MountainIcon className={cn("size-6", classNames?.icon)} />
-			<span>TrekToeic</span>
+			<span>
+				<span>Trek</span>
+				<span className="text-muted-foreground">Toeic</span>
+			</span>
 		</div>
 	);
 };

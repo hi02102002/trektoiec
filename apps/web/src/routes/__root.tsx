@@ -9,6 +9,7 @@ import {
 	Scripts,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
+import { NProgress } from "@/components/nprogress";
 import { Toaster } from "@/components/ui/sonner";
 import { getUser } from "@/functions/get-user";
 import type { orpc } from "@/utils/orpc";
@@ -37,6 +38,10 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
 		links: [
 			{
 				rel: "stylesheet",
+				href: "https://unpkg.com/nprogress@0.2.0/nprogress.css",
+			},
+			{
+				rel: "stylesheet",
 				href: appCss,
 			},
 		],
@@ -58,6 +63,7 @@ function RootDocument() {
 				<HeadContent />
 			</head>
 			<body>
+				<NProgress />
 				<Outlet />
 				<Toaster position="top-center" />
 				<TanStackRouterDevtools position="bottom-left" />

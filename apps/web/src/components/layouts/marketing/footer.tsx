@@ -1,4 +1,8 @@
-import { InstagramIcon, LinkedinIcon, TwitterIcon } from "lucide-react";
+import {
+	InstagramLogo,
+	LinkedinLogo,
+	TwitterLogo,
+} from "@phosphor-icons/react";
 import { Logo } from "@/components/logo";
 
 export const Footer = () => {
@@ -101,13 +105,13 @@ export const Footer = () => {
 					</p>
 					<div className="flex gap-4">
 						<a href="#" className="text-slate-400 hover:text-slate-600">
-							<TwitterIcon size={16} />
+							<TwitterLogo size={16} />
 						</a>
 						<a href="#" className="text-slate-400 hover:text-slate-600">
-							<InstagramIcon size={16} />
+							<InstagramLogo size={16} />
 						</a>
 						<a href="#" className="text-slate-400 hover:text-slate-600">
-							<LinkedinIcon size={16} />
+							<LinkedinLogo size={16} />
 						</a>
 					</div>
 				</div>

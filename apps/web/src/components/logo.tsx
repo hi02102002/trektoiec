@@ -7,9 +7,14 @@ type LogoProps = ComponentProps<"div"> & {
 		container?: string;
 		icon?: string;
 	};
+	isShowText?: boolean;
 };
 
-export const Logo = ({ className, classNames }: LogoProps) => {
+export const Logo = ({
+	className,
+	classNames,
+	isShowText = true,
+}: LogoProps) => {
 	return (
 		<div
 			className={cn(
@@ -19,10 +24,12 @@ export const Logo = ({ className, classNames }: LogoProps) => {
 			)}
 		>
 			<MountainIcon className={cn("size-6", classNames?.icon)} />
-			<span>
-				<span>Trek</span>
-				<span className="text-muted-foreground">Toeic</span>
-			</span>
+			{isShowText && (
+				<span>
+					<span>Trek</span>
+					<span className="text-muted-foreground">Toeic</span>
+				</span>
+			)}
 		</div>
 	);
 };

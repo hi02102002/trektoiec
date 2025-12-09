@@ -1,9 +1,4 @@
-import {
-	BriefcaseBusinessIcon,
-	EarIcon,
-	LineChartIcon,
-	TimerIcon,
-} from "lucide-react";
+import { Briefcase, ChartLine, Ear, Timer } from "@phosphor-icons/react";
 
 export const FeaturesBentoGrid = () => {
 	return (
@@ -22,7 +17,7 @@ export const FeaturesBentoGrid = () => {
 					<div className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition-shadow hover:shadow-md md:col-span-2">
 						<div className="relative z-10">
 							<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg border border-blue-100 bg-blue-50 text-blue-600">
-								<EarIcon size={20} />
+								<Ear size={20} weight="duotone" />
 							</div>
 							<h3 className="mb-2 font-semibold text-slate-900 text-xl">
 								Luyện Nghe Chuyên Sâu
@@ -81,7 +76,7 @@ export const FeaturesBentoGrid = () => {
 					</div>
 					<div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition-shadow hover:shadow-md">
 						<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg border border-orange-100 bg-orange-50 text-orange-600">
-							<TimerIcon size={20} />
+							<Timer size={20} weight="duotone" />
 						</div>
 						<h3 className="mb-2 font-semibold text-slate-900 text-xl">
 							Chiến Thuật Làm Bài Nhanh
@@ -93,7 +88,7 @@ export const FeaturesBentoGrid = () => {
 					</div>
 					<div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition-shadow hover:shadow-md">
 						<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg border border-emerald-100 bg-emerald-50 text-emerald-600">
-							<BriefcaseBusinessIcon size={20} />
+							<Briefcase size={20} weight="duotone" />
 						</div>
 						<h3 className="mb-2 font-semibold text-slate-900 text-xl">
 							Từ Vựng Chuyên Ngành
@@ -106,7 +101,7 @@ export const FeaturesBentoGrid = () => {
 					<div className="flex flex-col items-center gap-8 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition-shadow hover:shadow-md md:col-span-2 md:flex-row">
 						<div className="flex-1">
 							<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg border border-purple-100 bg-purple-50 text-purple-600">
-								<LineChartIcon size={20} />
+								<ChartLine size={20} weight="duotone" />
 							</div>
 							<h3 className="mb-2 font-semibold text-slate-900 text-xl">
 								Ước Lượng Điểm Số TOEIC

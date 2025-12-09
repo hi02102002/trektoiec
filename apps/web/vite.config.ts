@@ -14,9 +14,7 @@ export default defineConfig({
 				routeFileIgnorePattern: "^_(components|styles|assets|utils)$",
 			},
 		}),
-		nitro({
-			preset: "node-server",
-		}),
+		nitro(),
 		viteReact(),
 	],
 	build: {
@@ -24,4 +22,5 @@ export default defineConfig({
 			external: ["pg", "pg-native"],
 		},
 	},
+	nitro: {},
 });

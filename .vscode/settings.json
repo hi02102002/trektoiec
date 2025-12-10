@@ -7,7 +7,7 @@
   "[typescript]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "[json]": {
+  "[typescriptreact]": {
     "editor.defaultFormatter": "biomejs.biome"
-  }
+  },
 }

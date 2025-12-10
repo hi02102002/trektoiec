@@ -1,5 +1,5 @@
 /** biome-ignore-all lint/a11y/useSemanticElements: <hoho> */
-import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
+import { CaretLeft, CaretRight, DotsThree } from "@phosphor-icons/react";
 import * as React from "react";
 import { type ButtonProps, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -68,7 +68,7 @@ const PaginationPrevious = ({
 		className={cn("gap-1 pl-2.5", className)}
 		{...props}
 	>
-		<ChevronLeft className="h-4 w-4" />
+		<CaretLeft className="h-4 w-4" />
 		<span>Previous</span>
 	</PaginationLink>
 );
@@ -85,7 +85,7 @@ const PaginationNext = ({
 		{...props}
 	>
 		<span>Next</span>
-		<ChevronRight className="h-4 w-4" />
+		<CaretRight className="h-4 w-4" />
 	</PaginationLink>
 );
 PaginationNext.displayName = "PaginationNext";
@@ -99,7 +99,7 @@ const PaginationEllipsis = ({
 		className={cn("flex h-9 w-9 items-center justify-center", className)}
 		{...props}
 	>
-		<MoreHorizontal className="h-4 w-4" />
+		<DotsThree className="h-4 w-4" />
 		<span className="sr-only">More pages</span>
 	</span>
 );

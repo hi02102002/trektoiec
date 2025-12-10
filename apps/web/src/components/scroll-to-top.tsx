@@ -1,7 +1,7 @@
 "use client";
 
+import { CaretUp } from "@phosphor-icons/react";
 import { useScroll } from "ahooks";
-import { ChevronUpIcon } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
@@ -34,7 +34,7 @@ export const ScrollToTop = () => {
 				>
 					<Button size="icon" onClick={handleScrollTop}>
 						<span className="sr-only">Scroll to top</span>
-						<ChevronUpIcon className="size-5" />
+						<CaretUp className="size-5" />
 					</Button>
 				</motion.div>
 			)}

@@ -1,4 +1,4 @@
-import { Flame, Target } from "lucide-react";
+import { Flame, Target } from "@phosphor-icons/react";
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 
@@ -446,7 +446,7 @@ export const HeroSection = () => {
 								<div className="font-semibold text-slate-500 text-xs">
 									Day Streak
 								</div>
-								<div className="font-bold text-lg text-slate-900 leading-none">
+								<div className="glass-panel font-bold text-slate-900 text-sm leading-none">
 									14 ngày
 								</div>
 							</div>

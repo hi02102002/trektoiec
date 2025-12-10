@@ -8,18 +8,28 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
+import { createFileRoute } from '@tanstack/react-router'
+
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ProtectedRouteImport } from './routes/_protected'
 import { Route as AuthRouteImport } from './routes/_auth'
 import { Route as marketingMarketingRouteImport } from './routes/(marketing)/_marketing'
-import { Route as ProtectedAppIndexRouteImport } from './routes/_protected/app/index'
 import { Route as AuthLoginIndexRouteImport } from './routes/_auth/login/index'
 import { Route as ApiUploadCloudflareRouteImport } from './routes/api/upload/cloudflare'
 import { Route as ApiUploadBackblazeRouteImport } from './routes/api/upload/backblaze'
 import { Route as ApiRpcSplatRouteImport } from './routes/api/rpc/$'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
+import { Route as ProtectedAppDashboardRouteImport } from './routes/_protected/app/_dashboard'
 import { Route as marketingMarketingAboutRouteRouteImport } from './routes/(marketing)/_marketing/about/route'
 import { Route as marketingMarketingIndexRouteRouteImport } from './routes/(marketing)/_marketing/index/route'
+import { Route as ProtectedAppDashboardVocabulariesRouteRouteImport } from './routes/_protected/app/_dashboard/vocabularies/route'
+import { Route as ProtectedAppDashboardReadingRouteRouteImport } from './routes/_protected/app/_dashboard/reading/route'
+import { Route as ProtectedAppDashboardMockTestRouteRouteImport } from './routes/_protected/app/_dashboard/mock-test/route'
+import { Route as ProtectedAppDashboardListeningRouteRouteImport } from './routes/_protected/app/_dashboard/listening/route'
+import { Route as ProtectedAppDashboardGrammarRouteRouteImport } from './routes/_protected/app/_dashboard/grammar/route'
+import { Route as ProtectedAppDashboardIndexRouteRouteImport } from './routes/_protected/app/_dashboard/index/route'
+
+const ProtectedAppRouteImport = createFileRoute('/_protected/app')()
 
 const ProtectedRoute = ProtectedRouteImport.update({
   id: '/_protected',
@@ -29,14 +39,14 @@ const AuthRoute = AuthRouteImport.update({
   id: '/_auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProtectedAppRoute = ProtectedAppRouteImport.update({
+  id: '/app',
+  path: '/app',
+  getParentRoute: () => ProtectedRoute,
+} as any)
 const marketingMarketingRoute = marketingMarketingRouteImport.update({
   id: '/(marketing)/_marketing',
   getParentRoute: () => rootRouteImport,
-} as any)
-const ProtectedAppIndexRoute = ProtectedAppIndexRouteImport.update({
-  id: '/app/',
-  path: '/app/',
-  getParentRoute: () => ProtectedRoute,
 } as any)
 const AuthLoginIndexRoute = AuthLoginIndexRouteImport.update({
   id: '/login/',
@@ -63,6 +73,10 @@ const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   path: '/api/auth/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProtectedAppDashboardRoute = ProtectedAppDashboardRouteImport.update({
+  id: '/_dashboard',
+  getParentRoute: () => ProtectedAppRoute,
+} as any)
 const marketingMarketingAboutRouteRoute =
   marketingMarketingAboutRouteRouteImport.update({
     id: '/about',
@@ -75,24 +89,70 @@ const marketingMarketingIndexRouteRoute =
     path: '',
     getParentRoute: () => marketingMarketingRoute,
   } as any)
+const ProtectedAppDashboardVocabulariesRouteRoute =
+  ProtectedAppDashboardVocabulariesRouteRouteImport.update({
+    id: '/vocabularies',
+    path: '/vocabularies',
+    getParentRoute: () => ProtectedAppDashboardRoute,
+  } as any)
+const ProtectedAppDashboardReadingRouteRoute =
+  ProtectedAppDashboardReadingRouteRouteImport.update({
+    id: '/reading',
+    path: '/reading',
+    getParentRoute: () => ProtectedAppDashboardRoute,
+  } as any)
+const ProtectedAppDashboardMockTestRouteRoute =
+  ProtectedAppDashboardMockTestRouteRouteImport.update({
+    id: '/mock-test',
+    path: '/mock-test',
+    getParentRoute: () => ProtectedAppDashboardRoute,
+  } as any)
+const ProtectedAppDashboardListeningRouteRoute =
+  ProtectedAppDashboardListeningRouteRouteImport.update({
+    id: '/listening',
+    path: '/listening',
+    getParentRoute: () => ProtectedAppDashboardRoute,
+  } as any)
+const ProtectedAppDashboardGrammarRouteRoute =
+  ProtectedAppDashboardGrammarRouteRouteImport.update({
+    id: '/grammar',
+    path: '/grammar',
+    getParentRoute: () => ProtectedAppDashboardRoute,
+  } as any)
+const ProtectedAppDashboardIndexRouteRoute =
+  ProtectedAppDashboardIndexRouteRouteImport.update({
+    id: '/',
+    path: '',
+    getParentRoute: () => ProtectedAppDashboardRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/about': typeof marketingMarketingAboutRouteRoute
+  '/app': typeof ProtectedAppDashboardIndexRouteRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/rpc/$': typeof ApiRpcSplatRoute
   '/api/upload/backblaze': typeof ApiUploadBackblazeRoute
   '/api/upload/cloudflare': typeof ApiUploadCloudflareRoute
   '/login': typeof AuthLoginIndexRoute
-  '/app': typeof ProtectedAppIndexRoute
+  '/app/grammar': typeof ProtectedAppDashboardGrammarRouteRoute
+  '/app/listening': typeof ProtectedAppDashboardListeningRouteRoute
+  '/app/mock-test': typeof ProtectedAppDashboardMockTestRouteRoute
+  '/app/reading': typeof ProtectedAppDashboardReadingRouteRoute
+  '/app/vocabularies': typeof ProtectedAppDashboardVocabulariesRouteRoute
 }
 export interface FileRoutesByTo {
   '/about': typeof marketingMarketingAboutRouteRoute
+  '/app': typeof ProtectedAppDashboardIndexRouteRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/rpc/$': typeof ApiRpcSplatRoute
   '/api/upload/backblaze': typeof ApiUploadBackblazeRoute
   '/api/upload/cloudflare': typeof ApiUploadCloudflareRoute
   '/login': typeof AuthLoginIndexRoute
-  '/app': typeof ProtectedAppIndexRoute
+  '/app/grammar': typeof ProtectedAppDashboardGrammarRouteRoute
+  '/app/listening': typeof ProtectedAppDashboardListeningRouteRoute
+  '/app/mock-test': typeof ProtectedAppDashboardMockTestRouteRoute
+  '/app/reading': typeof ProtectedAppDashboardReadingRouteRoute
+  '/app/vocabularies': typeof ProtectedAppDashboardVocabulariesRouteRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -101,32 +161,49 @@ export interface FileRoutesById {
   '/(marketing)/_marketing': typeof marketingMarketingRouteWithChildren
   '/(marketing)/_marketing/': typeof marketingMarketingIndexRouteRoute
   '/(marketing)/_marketing/about': typeof marketingMarketingAboutRouteRoute
+  '/_protected/app': typeof ProtectedAppRouteWithChildren
+  '/_protected/app/_dashboard': typeof ProtectedAppDashboardRouteWithChildren
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/rpc/$': typeof ApiRpcSplatRoute
   '/api/upload/backblaze': typeof ApiUploadBackblazeRoute
   '/api/upload/cloudflare': typeof ApiUploadCloudflareRoute
   '/_auth/login/': typeof AuthLoginIndexRoute
-  '/_protected/app/': typeof ProtectedAppIndexRoute
+  '/_protected/app/_dashboard/': typeof ProtectedAppDashboardIndexRouteRoute
+  '/_protected/app/_dashboard/grammar': typeof ProtectedAppDashboardGrammarRouteRoute
+  '/_protected/app/_dashboard/listening': typeof ProtectedAppDashboardListeningRouteRoute
+  '/_protected/app/_dashboard/mock-test': typeof ProtectedAppDashboardMockTestRouteRoute
+  '/_protected/app/_dashboard/reading': typeof ProtectedAppDashboardReadingRouteRoute
+  '/_protected/app/_dashboard/vocabularies': typeof ProtectedAppDashboardVocabulariesRouteRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/about'
+    | '/app'
     | '/api/auth/$'
     | '/api/rpc/$'
     | '/api/upload/backblaze'
     | '/api/upload/cloudflare'
     | '/login'
-    | '/app'
+    | '/app/grammar'
+    | '/app/listening'
+    | '/app/mock-test'
+    | '/app/reading'
+    | '/app/vocabularies'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/about'
+    | '/app'
     | '/api/auth/$'
     | '/api/rpc/$'
     | '/api/upload/backblaze'
     | '/api/upload/cloudflare'
     | '/login'
-    | '/app'
+    | '/app/grammar'
+    | '/app/listening'
+    | '/app/mock-test'
+    | '/app/reading'
+    | '/app/vocabularies'
   id:
     | '__root__'
     | '/_auth'
@@ -134,12 +211,19 @@ export interface FileRouteTypes {
     | '/(marketing)/_marketing'
     | '/(marketing)/_marketing/'
     | '/(marketing)/_marketing/about'
+    | '/_protected/app'
+    | '/_protected/app/_dashboard'
     | '/api/auth/$'
     | '/api/rpc/$'
     | '/api/upload/backblaze'
     | '/api/upload/cloudflare'
     | '/_auth/login/'
-    | '/_protected/app/'
+    | '/_protected/app/_dashboard/'
+    | '/_protected/app/_dashboard/grammar'
+    | '/_protected/app/_dashboard/listening'
+    | '/_protected/app/_dashboard/mock-test'
+    | '/_protected/app/_dashboard/reading'
+    | '/_protected/app/_dashboard/vocabularies'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -168,19 +252,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_protected/app': {
+      id: '/_protected/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof ProtectedAppRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
     '/(marketing)/_marketing': {
       id: '/(marketing)/_marketing'
       path: ''
       fullPath: ''
       preLoaderRoute: typeof marketingMarketingRouteImport
       parentRoute: typeof rootRouteImport
-    }
-    '/_protected/app/': {
-      id: '/_protected/app/'
-      path: '/app'
-      fullPath: '/app'
-      preLoaderRoute: typeof ProtectedAppIndexRouteImport
-      parentRoute: typeof ProtectedRoute
     }
     '/_auth/login/': {
       id: '/_auth/login/'
@@ -217,6 +301,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAuthSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_protected/app/_dashboard': {
+      id: '/_protected/app/_dashboard'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof ProtectedAppDashboardRouteImport
+      parentRoute: typeof ProtectedAppRoute
+    }
     '/(marketing)/_marketing/about': {
       id: '/(marketing)/_marketing/about'
       path: '/about'
@@ -231,6 +322,48 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof marketingMarketingIndexRouteRouteImport
       parentRoute: typeof marketingMarketingRoute
     }
+    '/_protected/app/_dashboard/vocabularies': {
+      id: '/_protected/app/_dashboard/vocabularies'
+      path: '/vocabularies'
+      fullPath: '/app/vocabularies'
+      preLoaderRoute: typeof ProtectedAppDashboardVocabulariesRouteRouteImport
+      parentRoute: typeof ProtectedAppDashboardRoute
+    }
+    '/_protected/app/_dashboard/reading': {
+      id: '/_protected/app/_dashboard/reading'
+      path: '/reading'
+      fullPath: '/app/reading'
+      preLoaderRoute: typeof ProtectedAppDashboardReadingRouteRouteImport
+      parentRoute: typeof ProtectedAppDashboardRoute
+    }
+    '/_protected/app/_dashboard/mock-test': {
+      id: '/_protected/app/_dashboard/mock-test'
+      path: '/mock-test'
+      fullPath: '/app/mock-test'
+      preLoaderRoute: typeof ProtectedAppDashboardMockTestRouteRouteImport
+      parentRoute: typeof ProtectedAppDashboardRoute
+    }
+    '/_protected/app/_dashboard/listening': {
+      id: '/_protected/app/_dashboard/listening'
+      path: '/listening'
+      fullPath: '/app/listening'
+      preLoaderRoute: typeof ProtectedAppDashboardListeningRouteRouteImport
+      parentRoute: typeof ProtectedAppDashboardRoute
+    }
+    '/_protected/app/_dashboard/grammar': {
+      id: '/_protected/app/_dashboard/grammar'
+      path: '/grammar'
+      fullPath: '/app/grammar'
+      preLoaderRoute: typeof ProtectedAppDashboardGrammarRouteRouteImport
+      parentRoute: typeof ProtectedAppDashboardRoute
+    }
+    '/_protected/app/_dashboard/': {
+      id: '/_protected/app/_dashboard/'
+      path: ''
+      fullPath: '/app'
+      preLoaderRoute: typeof ProtectedAppDashboardIndexRouteRouteImport
+      parentRoute: typeof ProtectedAppDashboardRoute
+    }
   }
 }
 
@@ -244,12 +377,52 @@ const AuthRouteChildren: AuthRouteChildren = {
 
 const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
 
+interface ProtectedAppDashboardRouteChildren {
+  ProtectedAppDashboardIndexRouteRoute: typeof ProtectedAppDashboardIndexRouteRoute
+  ProtectedAppDashboardGrammarRouteRoute: typeof ProtectedAppDashboardGrammarRouteRoute
+  ProtectedAppDashboardListeningRouteRoute: typeof ProtectedAppDashboardListeningRouteRoute
+  ProtectedAppDashboardMockTestRouteRoute: typeof ProtectedAppDashboardMockTestRouteRoute
+  ProtectedAppDashboardReadingRouteRoute: typeof ProtectedAppDashboardReadingRouteRoute
+  ProtectedAppDashboardVocabulariesRouteRoute: typeof ProtectedAppDashboardVocabulariesRouteRoute
+}
+
+const ProtectedAppDashboardRouteChildren: ProtectedAppDashboardRouteChildren = {
+  ProtectedAppDashboardIndexRouteRoute: ProtectedAppDashboardIndexRouteRoute,
+  ProtectedAppDashboardGrammarRouteRoute:
+    ProtectedAppDashboardGrammarRouteRoute,
+  ProtectedAppDashboardListeningRouteRoute:
+    ProtectedAppDashboardListeningRouteRoute,
+  ProtectedAppDashboardMockTestRouteRoute:
+    ProtectedAppDashboardMockTestRouteRoute,
+  ProtectedAppDashboardReadingRouteRoute:
+    ProtectedAppDashboardReadingRouteRoute,
+  ProtectedAppDashboardVocabulariesRouteRoute:
+    ProtectedAppDashboardVocabulariesRouteRoute,
+}
+
+const ProtectedAppDashboardRouteWithChildren =
+  ProtectedAppDashboardRoute._addFileChildren(
+    ProtectedAppDashboardRouteChildren,
+  )
+
+interface ProtectedAppRouteChildren {
+  ProtectedAppDashboardRoute: typeof ProtectedAppDashboardRouteWithChildren
+}
+
+const ProtectedAppRouteChildren: ProtectedAppRouteChildren = {
+  ProtectedAppDashboardRoute: ProtectedAppDashboardRouteWithChildren,
+}
+
+const ProtectedAppRouteWithChildren = ProtectedAppRoute._addFileChildren(
+  ProtectedAppRouteChildren,
+)
+
 interface ProtectedRouteChildren {
-  ProtectedAppIndexRoute: typeof ProtectedAppIndexRoute
+  ProtectedAppRoute: typeof ProtectedAppRouteWithChildren
 }
 
 const ProtectedRouteChildren: ProtectedRouteChildren = {
-  ProtectedAppIndexRoute: ProtectedAppIndexRoute,
+  ProtectedAppRoute: ProtectedAppRouteWithChildren,
 }
 
 const ProtectedRouteWithChildren = ProtectedRoute._addFileChildren(

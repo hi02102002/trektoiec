@@ -187,3 +187,11 @@ body {
 	backdrop-filter: blur(12px);
 	-webkit-backdrop-filter: blur(12px);
 }
+
+#nprogress .bar {
+	@apply bg-primary;
+}
+
+#nprogress .peg {
+	@apply shadow-lg shadow-primary;
+}

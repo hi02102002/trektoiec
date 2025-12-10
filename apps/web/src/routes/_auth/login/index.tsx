@@ -1,6 +1,7 @@
 /** biome-ignore-all lint/a11y/useValidAnchor: <no link> */
+
+import { CaretLeft } from "@phosphor-icons/react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ChevronLeft } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -23,7 +24,7 @@ function RouteComponent() {
 				//@ts-expect-error
 				to="/"
 			>
-				<ChevronLeft />
+				<CaretLeft />
 				Trang chủ
 			</Link>
 			<div className="flex flex-1 flex-col justify-center px-4 py-10 lg:px-6">

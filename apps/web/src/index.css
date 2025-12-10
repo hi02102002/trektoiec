@@ -1,6 +1,6 @@
+@import "@fontsource-variable/montserrat";
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "@fontsource-variable/montserrat";
 
 @custom-variant dark (&:where(.dark, .dark *));
 

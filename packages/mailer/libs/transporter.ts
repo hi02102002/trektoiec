@@ -1,4 +1,4 @@
-import { env } from "@trektoiec/env";
+import { env } from "@trektoeic/env";
 import nodemailer from "nodemailer";
 
 export const transporter = nodemailer.createTransport({

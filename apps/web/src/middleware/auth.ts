@@ -1,5 +1,5 @@
 import { createMiddleware } from "@tanstack/react-start";
-import { auth } from "@trektoiec/auth";
+import { auth } from "@trektoeic/auth";
 
 export const authMiddleware = createMiddleware().server(
 	async ({ next, request }) => {

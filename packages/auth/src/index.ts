@@ -1,7 +1,7 @@
-import { db } from "@trektoiec/db";
-import * as schema from "@trektoiec/db/schema/auth";
-import { env } from "@trektoiec/env";
-import { sendMagicLink } from "@trektoiec/mailer";
+import { db } from "@trektoeic/db";
+import * as schema from "@trektoeic/db/schema/auth";
+import { env } from "@trektoeic/env";
+import { sendMagicLink } from "@trektoeic/mailer";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { magicLink } from "better-auth/plugins";

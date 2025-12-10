@@ -1,5 +1,5 @@
 {
-	"name": "@trektoiec/env",
+	"name": "@trektoeic/env",
 	"exports": {
 		".": {
 			"default": "./src/index.ts"
@@ -13,7 +13,7 @@
 		"check-types": "tsc --noEmit"
 	},
 	"devDependencies": {
-		"@trektoiec/config": "workspace:*"
+		"@trektoeic/config": "workspace:*"
 	},
 	"peerDependencies": {
 		"typescript": "^5"

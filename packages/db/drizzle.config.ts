@@ -1,4 +1,4 @@
-import { env } from "@trektoiec/env";
+import { env } from "@trektoeic/env";
 import { defineConfig } from "drizzle-kit";
 
 export default defineConfig({

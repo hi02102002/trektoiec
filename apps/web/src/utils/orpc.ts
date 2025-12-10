@@ -5,8 +5,8 @@ import { createRouterClient } from "@orpc/server";
 import { createTanstackQueryUtils } from "@orpc/tanstack-query";
 import { QueryCache, QueryClient } from "@tanstack/react-query";
 import { createIsomorphicFn } from "@tanstack/react-start";
-import { createContext } from "@trektoiec/api/context";
-import { appRouter } from "@trektoiec/api/routers/index";
+import { createContext } from "@trektoeic/api/context";
+import { appRouter } from "@trektoeic/api/routers/index";
 import { toast } from "sonner";
 
 export const queryClient = new QueryClient({

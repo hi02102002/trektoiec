@@ -10,9 +10,9 @@ services:
     image: postgres:16-alpine
     restart: unless-stopped
     environment:
-      POSTGRES_USER: trektoiec
+      POSTGRES_USER: trektoeic
       POSTGRES_PASSWORD: vohoanghuy
-      POSTGRES_DB: trektoiec
+      POSTGRES_DB: trektoeic
     ports:
       - "5432:5432"
     volumes:

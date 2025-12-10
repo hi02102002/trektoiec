@@ -1,2 +1,2 @@
-lint-staged
 pnpm run check-types
+pnpm run check

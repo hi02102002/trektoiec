@@ -1,7 +1,7 @@
 import * as betterUploadClient from "@better-upload/client";
 import * as betterUploadServer from "@better-upload/server";
 import { backblaze, cloudflare } from "@better-upload/server/clients";
-import { env } from "@trektoiec/env";
+import { env } from "@trektoeic/env";
 
 const cloudflareRouter: betterUploadServer.Router = {
 	client: cloudflare({

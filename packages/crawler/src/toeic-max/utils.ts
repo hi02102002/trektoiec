@@ -53,7 +53,7 @@ export async function runBatchesWithCount<TInput, TOutput>(
 	return results;
 }
 
-export function writeToFile(filePath: string, value: any) {
+export function writeToFile(filePath: string, value: unknown) {
 	if (fs.existsSync(filePath) && fs.lstatSync(filePath).isDirectory()) {
 		fs.rmSync(filePath, { recursive: true });
 	}

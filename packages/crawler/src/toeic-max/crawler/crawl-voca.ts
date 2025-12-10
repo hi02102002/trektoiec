@@ -67,7 +67,7 @@ export async function getAllVocabs() {
 		10,
 		(idx) => {
 			console.log(
-				`Fetched vocabs for section ${idx + 1} / ${sectionIds.length}`,
+				`Fetched vocabs for section ${idx} / ${Math.ceil(sectionIds.length / 10)}`,
 			);
 		},
 	);

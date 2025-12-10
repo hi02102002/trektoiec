@@ -54,7 +54,7 @@ export const getAllMockTests = async () => {
 		},
 		5,
 		(idx) => {
-			console.log(`Crawled batch ${idx} / ${hashedKits.size / 5}`);
+			console.log(`Crawled batch ${idx} / ${Math.ceil(hashedKits.size / 5)}`);
 		},
 	).then((questions) => {
 		return questions.flat();

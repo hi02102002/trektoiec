@@ -1,5 +1,5 @@
 {
-	"name": "@trektoiec/uploads",
+	"name": "@trektoeic/uploads",
 	"exports": {
 		".": {
 			"default": "./src/index.ts"
@@ -13,7 +13,7 @@
 		"check-types": "tsc --noEmit"
 	},
 	"devDependencies": {
-		"@trektoiec/config": "workspace:*"
+		"@trektoeic/config": "workspace:*"
 	},
 	"peerDependencies": {
 		"typescript": "^5"
@@ -21,6 +21,6 @@
 	"dependencies": {
 		"@better-upload/client": "^3.0.5",
 		"@better-upload/server": "^3.0.5",
-		"@trektoiec/env": "workspace:*"
+		"@trektoeic/env": "workspace:*"
 	}
 }

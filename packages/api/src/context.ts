@@ -1,4 +1,4 @@
-import { auth } from "@trektoiec/auth";
+import { auth } from "@trektoeic/auth";
 
 export async function createContext({ req }: { req: Request }) {
 	const session = await auth.api.getSession({

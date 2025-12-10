@@ -1,0 +1,32 @@
+{
+	"name": "@trektoeic/crawler",
+	"type": "module",
+	"exports": {
+		".": {
+			"default": "./src/index.ts"
+		},
+		"./*": {
+			"default": "./src/*.ts"
+		}
+	},
+	"scripts": {
+		"check-types": "tsc --noEmit"
+	},
+	"devDependencies": {
+		"@trektoeic/config": "workspace:*",
+		"@types/crypto-js": "^4.2.2",
+		"axios-retry": "^4.5.0"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"dependencies": {
+		"@trektoeic/env": "workspace:*",
+		"@trektoeic/utils": "workspace:*",
+		"@trektoeic/db": "workspace:*",
+		"axios": "^1.13.2",
+		"crypto-js": "^4.2.0",
+		"https-proxy-agent": "^7.0.6",
+		"zod": "^4.1.11"
+	}
+}

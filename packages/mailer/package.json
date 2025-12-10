@@ -1,5 +1,5 @@
 {
-	"name": "@trektoiec/mailer",
+	"name": "@trektoeic/mailer",
 	"exports": {
 		".": {
 			"default": "./funcs/index.ts"
@@ -15,7 +15,7 @@
 	},
 	"devDependencies": {
 		"@react-email/preview-server": "5.0.7",
-		"@trektoiec/config": "workspace:*",
+		"@trektoeic/config": "workspace:*",
 		"@types/nodemailer": "^7.0.4",
 		"@types/react": "~19.1.10",
 		"@types/react-dom": "^19.0.4",
@@ -26,7 +26,7 @@
 	},
 	"dependencies": {
 		"@react-email/components": "1.0.1",
-		"@trektoiec/env": "workspace:*",
+		"@trektoeic/env": "workspace:*",
 		"@unosend/node": "^1.0.3",
 		"nodemailer": "^7.0.11",
 		"react": "19.1.2",

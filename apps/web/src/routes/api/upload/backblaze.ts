@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { backblazeRouter, betterUploadServer } from "@trektoiec/uploads";
+import { backblazeRouter, betterUploadServer } from "@trektoeic/uploads";
 
 export const Route = createFileRoute("/api/upload/backblaze")({
 	server: {

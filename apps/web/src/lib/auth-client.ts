@@ -1,4 +1,4 @@
-import type { auth } from "@trektoiec/auth";
+import type { auth } from "@trektoeic/auth";
 import {
 	inferAdditionalFields,
 	magicLinkClient,

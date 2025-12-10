@@ -1,5 +1,5 @@
 {
-	"name": "@trektoiec/auth",
+	"name": "@trektoeic/auth",
 	"exports": {
 		".": {
 			"default": "./src/index.ts"
@@ -13,7 +13,7 @@
 		"check-types": "tsc --noEmit"
 	},
 	"devDependencies": {
-		"@trektoiec/config": "workspace:*"
+		"@trektoeic/config": "workspace:*"
 	},
 	"peerDependencies": {
 		"typescript": "^5"
@@ -21,8 +21,8 @@
 	"dependencies": {
 		"better-auth": "catalog:",
 		"zod": "^4.1.11",
-		"@trektoiec/db": "workspace:*",
-		"@trektoiec/env": "workspace:*",
-		"@trektoiec/mailer": "workspace:*"
+		"@trektoeic/db": "workspace:*",
+		"@trektoeic/env": "workspace:*",
+		"@trektoeic/mailer": "workspace:*"
 	}
 }

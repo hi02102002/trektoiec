@@ -5,7 +5,7 @@ RUN corepack enable && corepack prepare pnpm@9.15.2 --activate
 
 FROM base AS prune
 COPY . .
-RUN pnpm dlx turbo prune @trektoiec/web --docker
+RUN pnpm dlx turbo prune @trektoeic/web --docker
 
 FROM base AS installer
 COPY --from=prune /app/out/json/ ./
@@ -22,7 +22,7 @@ COPY --from=prune /app/out/full/ ./
 COPY --from=installer /app/node_modules ./node_modules
 COPY --from=installer /app/apps/web/node_modules ./apps/web/node_modules
 COPY --from=installer /app/packages/ ./packages/
-RUN pnpm dlx turbo run build --filter=@trektoiec/web
+RUN pnpm dlx turbo run build --filter=@trektoeic/web
 
 # ---------- Runner ----------
 FROM base AS runner

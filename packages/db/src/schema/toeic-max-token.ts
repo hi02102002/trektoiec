@@ -1,0 +1,10 @@
+import { pgTable, text } from "drizzle-orm/pg-core";
+import { DEFAULT_SCHEMA } from "../constants";
+
+const DEFAULT_TOKEN =
+	"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NDE2MzMsIm5hbWUiOiJIb2FuZyBIdXkiLCJwaG9uZSI6IjAzOTQ2MDQ4MzEiLCJub2lzZSI6IjY4NTY2MTY4ODVjMjEiLCJhY3RpdmUiOjEsInZlcmlmeV9waG9uZSI6MCwiZW1haWwiOiJob2FuZ2h1eXZvZGV2QGdtYWlsLmNvbSIsInNlY3Jlc3RfY29kZSI6MCwiZXhwaXJlc19zZWNyZXN0X2NvZGUiOm51bGwsImFjdGl2YXRpb25fY29kZSI6bnVsbCwiZGF0ZV9leHBpcmVzIjpudWxsLCJwYWNrYWdlIjowLCJwYWNrYWdlX2V4cGlyZXMiOiIyMDI1LTA2LTI0IDE0OjM4OjE2IiwiaXNfYWZmaWxpYXRlIjowLCJtYXhfcGVyY2VudCI6MCwic2NvcmUiOjAsImRldmljZSI6IkRlc2t0b3AiLCJyZWZfaWQiOjAsImxhbmciOiJ2biIsImNvbW11bml0eV9wb2ludHMiOjAsImNvbW11bml0eV9yYW5rIjpudWxsfQ.HEZZ4FXgKzuQlS74QaRL7ypZAe3V5U2fd2lkYQhn52E";
+
+export const toeicMaxTokens = pgTable("toeic_max_tokens", {
+	...DEFAULT_SCHEMA,
+	token: text("token").notNull().default(DEFAULT_TOKEN),
+});

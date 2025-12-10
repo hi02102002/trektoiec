@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { betterUploadServer, cloudflareRouter } from "@trektoiec/uploads";
+import { betterUploadServer, cloudflareRouter } from "@trektoeic/uploads";
 
 export const Route = createFileRoute("/api/upload/cloudflare")({
 	server: {

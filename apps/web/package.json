@@ -1,5 +1,5 @@
 {
-	"name": "@trektoiec/web",
+	"name": "@trektoeic/web",
 	"private": true,
 	"type": "module",
 	"scripts": {
@@ -51,9 +51,9 @@
 		"@tanstack/react-router-with-query": "^1.130.17",
 		"@tanstack/react-start": "^1.132.31",
 		"@tanstack/router-plugin": "^1.132.31",
-		"@trektoiec/api": "workspace:*",
-		"@trektoiec/auth": "workspace:*",
-		"@trektoiec/uploads": "workspace:*",
+		"@trektoeic/api": "workspace:*",
+		"@trektoeic/auth": "workspace:*",
+		"@trektoeic/uploads": "workspace:*",
 		"ahooks": "^3.9.6",
 		"better-auth": "catalog:",
 		"class-variance-authority": "^0.7.1",
@@ -89,7 +89,7 @@
 		"@tanstack/react-router-devtools": "^1.132.31",
 		"@testing-library/dom": "^10.4.0",
 		"@testing-library/react": "^16.2.0",
-		"@trektoiec/config": "workspace:*",
+		"@trektoeic/config": "workspace:*",
 		"@types/nprogress": "^0.2.3",
 		"@types/react": "~19.1.10",
 		"@types/react-dom": "^19.0.4",

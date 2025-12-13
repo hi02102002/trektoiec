@@ -3,7 +3,7 @@ import { QuestionWithSubsSchema } from "@trektoeic/schemas/question-schema";
 import z from "zod";
 import { requiredAuthProcedure } from "../procedures";
 
-const tags = ["Parts"] as const;
+const tags = ["Questions"] as const;
 
 const getRandomQuestionsByPart = requiredAuthProcedure
 	.route({

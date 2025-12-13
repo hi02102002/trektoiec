@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 
 const MAP_PART = {
 	"1": {
-		title: "Mô tả hình anh",
+		title: "Mô tả hình ảnh",
 		desc: "Phân tích hình ảnh và chọn mô tả chính xác nhất.",
 		Icon: ImageIcon,
 		color: "indigo",

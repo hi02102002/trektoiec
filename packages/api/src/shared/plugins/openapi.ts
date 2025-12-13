@@ -1,8 +1,9 @@
 import { OpenAPIReferencePlugin } from "@orpc/openapi/plugins";
+import type { Context } from "@orpc/server";
 import { ZodToJsonSchemaConverter } from "@orpc/zod/zod4";
 
-export const openapi = () => {
-	return new OpenAPIReferencePlugin({
+export const openapi = <T extends Context>() => {
+	return new OpenAPIReferencePlugin<T>({
 		schemaConverters: [new ZodToJsonSchemaConverter()],
 		specGenerateOptions: {
 			info: {

@@ -1,3 +1,4 @@
+import type { LoggerContext } from "@orpc/experimental-pino";
 import { auth } from "@trektoeic/auth";
 
 export async function createContext({ req }: { req: Request }) {
@@ -15,4 +16,8 @@ export async function createContext({ req }: { req: Request }) {
 	}
 }
 
-export type Context = Awaited<ReturnType<typeof createContext>>;
+type AuthContext = NonNullable<Awaited<ReturnType<typeof createContext>>>;
+
+export interface Context extends LoggerContext {
+	session: AuthContext["session"];
+}

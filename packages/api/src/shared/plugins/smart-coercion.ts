@@ -3,7 +3,7 @@ import type { Context } from "@orpc/server";
 import { ZodToJsonSchemaConverter } from "@orpc/zod/zod4";
 
 export const smartCoercion = <T extends Context>(): SmartCoercionPlugin<T> => {
-	return new SmartCoercionPlugin({
+	return new SmartCoercionPlugin<T>({
 		schemaConverters: [new ZodToJsonSchemaConverter()],
 	});
 };

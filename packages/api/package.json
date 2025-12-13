@@ -33,9 +33,12 @@
 		"@orpc/openapi": "catalog:",
 		"@orpc/server": "catalog:",
 		"@orpc/zod": "catalog:",
+		"@orpc/experimental-pino": "catalog:",
 		"@trektoeic/auth": "workspace:*",
 		"@trektoeic/db": "workspace:*",
 		"@trektoeic/env": "workspace:*",
+		"@trektoeic/logger": "workspace:*",
+		"@trektoeic/utils": "workspace:*",
 		"zod": "^4.1.11"
 	}
 }

@@ -9,6 +9,7 @@ import { RPCHandler } from "@orpc/server/fetch";
 import {
 	cors,
 	csrfProtection,
+	logger,
 	openapi,
 	responseHeader,
 	smartCoercion,
@@ -19,13 +20,22 @@ import { batchHandler } from "./plugins/batch-handler";
 type AnyRouter<T extends Context> = Router<ContractRouter<any>, T>;
 
 export const createRpcHandler = <T extends Context>(router: AnyRouter<T>) => {
+	const plugins = [
+		cors(),
+		logger(),
+		batchHandler(),
+		smartCoercion<T>(),
+		responseHeader(),
+	].filter((p) => p !== null);
 	return new RPCHandler(router, {
 		interceptors: [
 			onError((error) => {
 				console.error(error);
 			}),
 		],
-		plugins: [cors(), batchHandler(), responseHeader()],
+		// biome-ignore lint/suspicious/noTsIgnore: orpc types issue
+		// @ts-ignore
+		plugins,
 	});
 };
 
@@ -36,6 +46,7 @@ export const createOpenApiHandler = <T extends Context>(
 		cors(),
 		openapi(),
 		smartCoercion<T>(),
+		logger(),
 		csrfProtection(),
 		responseHeader(),
 	].filter((p) => p !== null);
@@ -46,7 +57,8 @@ export const createOpenApiHandler = <T extends Context>(
 				console.error(error);
 			}),
 		],
-		// @ts-expect-error: Type issue with orpc
+		// biome-ignore lint/suspicious/noTsIgnore: orpc types issue
+		// @ts-ignore
 		plugins,
 	});
 };

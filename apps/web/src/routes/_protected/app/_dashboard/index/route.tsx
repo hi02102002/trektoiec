@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { orpc } from "@/utils/orpc";
 
@@ -7,7 +7,7 @@ export const Route = createFileRoute("/_protected/app/_dashboard/")({
 });
 
 function RouteComponent() {
-	const { data } = useQuery(
+	const { data } = useSuspenseQuery(
 		orpc.practices.getByPart.queryOptions({
 			input: {
 				part: 1,

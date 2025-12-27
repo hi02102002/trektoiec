@@ -1,11 +1,12 @@
 import { getRouteApi } from "@tanstack/react-router";
-import { useEffect, useMemo, useRef } from "react";
+import { Activity, useEffect, useMemo, useRef } from "react";
 import {
 	QuestionAudio,
 	QuestionFlagButton,
 	QuestionImage,
 	QuestionPos,
 	QuestionProvider,
+	QuestionSubExplanation,
 	QuestionSubOptions,
 	QuestionSubs,
 	QuestionSubText,
@@ -56,6 +57,7 @@ export const PracticeQuestionsList = () => {
 
 	const isHorizontalLayout = PART_LAYOUT_HORIZONTAL.has(Number(part));
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <Need to only run on currentQuestionIdx change>
 	useEffect(() => {
 		leftSideRef.current?.scrollTo({
 			top: 0,
@@ -65,7 +67,7 @@ export const PracticeQuestionsList = () => {
 			top: 0,
 			behavior: "smooth",
 		});
-	}, []);
+	}, [currentQuestionIdx]);
 
 	useEffect(() => {
 		if (!currentQuestion) return;
@@ -82,7 +84,7 @@ export const PracticeQuestionsList = () => {
 	return (
 		<div
 			className={cn("mx-auto h-full max-w-3xl space-y-8 pb-20", {
-				"flex max-w-full space-y-0": isHorizontalLayout,
+				"flex h-[calc(100svh_-_4rem)] max-w-full space-y-0": isHorizontalLayout,
 			})}
 		>
 			<QuestionProvider question={currentQuestion}>
@@ -166,6 +168,12 @@ export const PracticeQuestionsList = () => {
 										});
 									}}
 								/>
+								<Activity mode={currentAnswer.choice ? "visible" : "hidden"}>
+									<QuestionSubExplanation
+										mode="practice"
+										isAnswerSelected={!!currentAnswer.choice}
+									/>
+								</Activity>
 							</div>
 						);
 					}}

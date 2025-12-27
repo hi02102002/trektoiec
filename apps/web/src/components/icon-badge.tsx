@@ -54,7 +54,6 @@ export const IconBadge = ({
 				iconBadgeVariants({
 					color,
 				}),
-				MAP_COLORS[color],
 				className,
 			)}
 			{...props}

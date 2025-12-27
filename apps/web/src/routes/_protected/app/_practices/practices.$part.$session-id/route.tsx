@@ -6,6 +6,7 @@ import {
 	CurrentQuestionProvider,
 	QuestionTimerProvider,
 } from "@/stores/attempt";
+import { ExitPracticeDialog } from "./_components/exit-practice-dialog";
 import { PracticeActions } from "./_components/practice-actions";
 import { PracticeQuestionsList } from "./_components/practice-questions-list";
 import { PracticeTimer } from "./_components/practice-timer";
@@ -71,11 +72,12 @@ function RouteComponent() {
 					/>
 					<div className="flex flex-col pt-16">
 						<QuestionsNavigator />
-						<div className="ml-64 min-h-[calc(100svh_-_4rem)]">
+						<div className="ml-64">
 							<PracticeQuestionsList />
 						</div>
 					</div>
 					<PracticeActionBar />
+					<ExitPracticeDialog />
 				</QuestionTimerProvider>
 			</AnswersProvider>
 		</CurrentQuestionProvider>

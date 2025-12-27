@@ -6,6 +6,7 @@ import {
 	CurrentQuestionProvider,
 	QuestionTimerProvider,
 } from "@/stores/attempt";
+import { ExitPracticeDialog } from "./_components/exit-practice-dialog";
 import { PracticeActions } from "./_components/practice-actions";
 import { PracticeQuestionsList } from "./_components/practice-questions-list";
 import { PracticeTimer } from "./_components/practice-timer";
@@ -76,6 +77,7 @@ function RouteComponent() {
 						</div>
 					</div>
 					<PracticeActionBar />
+					<ExitPracticeDialog />
 				</QuestionTimerProvider>
 			</AnswersProvider>
 		</CurrentQuestionProvider>

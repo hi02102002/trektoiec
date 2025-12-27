@@ -1,6 +1,3 @@
-/** biome-ignore-all lint/a11y/useSemanticElements: <no> */
-"use client";
-
 import { cva, type VariantProps } from "class-variance-authority";
 import { useMemo } from "react";
 import { Label } from "@/components/ui/label";
@@ -54,26 +51,29 @@ function FieldGroup({ className, ...props }: React.ComponentProps<"div">) {
 	);
 }
 
-const fieldVariants = cva("group/field flex w-full gap-2", {
-	variants: {
-		orientation: {
-			vertical: ["flex-col [&>*]:w-full [&>.sr-only]:w-auto"],
-			horizontal: [
-				"flex-row items-center",
-				"[&>[data-slot=field-label]]:flex-auto",
-				"has-[>[data-slot=field-content]]:items-start has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
-			],
-			responsive: [
-				"@md/field-group:flex-row flex-col @md/field-group:items-center @md/field-group:[&>*]:w-auto [&>*]:w-full [&>.sr-only]:w-auto",
-				"@md/field-group:[&>[data-slot=field-label]]:flex-auto",
-				"@md/field-group:has-[>[data-slot=field-content]]:items-start @md/field-group:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
-			],
+const fieldVariants = cva(
+	"group/field flex w-full gap-2 data-[invalid=true]:text-destructive",
+	{
+		variants: {
+			orientation: {
+				vertical: ["flex-col [&>*]:w-full [&>.sr-only]:w-auto"],
+				horizontal: [
+					"flex-row items-center",
+					"[&>[data-slot=field-label]]:flex-auto",
+					"has-[>[data-slot=field-content]]:items-start has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
+				],
+				responsive: [
+					"@md/field-group:flex-row flex-col @md/field-group:items-center @md/field-group:[&>*]:w-auto [&>*]:w-full [&>.sr-only]:w-auto",
+					"@md/field-group:[&>[data-slot=field-label]]:flex-auto",
+					"@md/field-group:has-[>[data-slot=field-content]]:items-start @md/field-group:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
+				],
+			},
+		},
+		defaultVariants: {
+			orientation: "vertical",
 		},
 	},
-	defaultVariants: {
-		orientation: "vertical",
-	},
-});
+);
 
 function Field({
 	className,
@@ -106,19 +106,25 @@ function FieldContent({ className, ...props }: React.ComponentProps<"div">) {
 
 function FieldLabel({
 	className,
+	required,
+	children,
 	...props
-}: React.ComponentProps<typeof Label>) {
+}: React.ComponentProps<typeof Label> & { required?: boolean }) {
 	return (
 		<Label
 			data-slot="field-label"
+			data-required={required}
 			className={cn(
 				"group/field-label peer/field-label flex w-fit gap-2 leading-snug group-data-[disabled=true]/field:opacity-50",
-				"has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border [&>[data-slot=field]]:p-4",
+				"has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border [&>*]:data-[slot=field]:p-4",
 				"has-data-[state=checked]:border-primary has-data-[state=checked]:bg-primary/5 dark:has-data-[state=checked]:bg-primary/10",
+				"data-[required=true]:after:ml-0.5 data-[required=true]:after:text-destructive data-[required=true]:after:content-['*']",
 				className,
 			)}
 			{...props}
-		/>
+		>
+			{children}
+		</Label>
 	);
 }
 
@@ -193,19 +199,22 @@ function FieldError({
 			return children;
 		}
 
-		if (!errors) {
+		if (!errors?.length) {
 			return null;
 		}
 
-		if (errors?.length === 1 && errors[0]?.message) {
-			return errors[0].message;
+		const uniqueErrors = [
+			...new Map(errors.map((error) => [error?.message, error])).values(),
+		];
+
+		if (uniqueErrors?.length === 1) {
+			return uniqueErrors[0]?.message;
 		}
 
 		return (
 			<ul className="ml-4 flex list-disc flex-col gap-1">
-				{errors.map(
+				{uniqueErrors.map(
 					(error, index) =>
-						// biome-ignore lint/suspicious/noArrayIndexKey: <no>
 						error?.message && <li key={index}>{error.message}</li>,
 				)}
 			</ul>

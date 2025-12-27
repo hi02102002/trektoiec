@@ -56,6 +56,7 @@ export const PracticeQuestionsList = () => {
 
 	const isHorizontalLayout = PART_LAYOUT_HORIZONTAL.has(Number(part));
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <Need to only run on currentQuestionIdx change>
 	useEffect(() => {
 		leftSideRef.current?.scrollTo({
 			top: 0,
@@ -65,7 +66,7 @@ export const PracticeQuestionsList = () => {
 			top: 0,
 			behavior: "smooth",
 		});
-	}, []);
+	}, [currentQuestionIdx]);
 
 	useEffect(() => {
 		if (!currentQuestion) return;

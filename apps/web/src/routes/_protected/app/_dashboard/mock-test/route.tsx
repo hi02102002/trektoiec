@@ -20,6 +20,9 @@ export const Route = createFileRoute("/_protected/app/_dashboard/mock-test")({
 				index: false,
 				follow: false,
 			},
+			alternates: {
+				canonical: "/app/mock-test",
+			},
 		});
 
 		return { meta, links };

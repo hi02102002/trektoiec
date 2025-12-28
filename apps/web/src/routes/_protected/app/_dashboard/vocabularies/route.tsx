@@ -20,6 +20,9 @@ export const Route = createFileRoute("/_protected/app/_dashboard/vocabularies")(
 					index: false,
 					follow: false,
 				},
+				alternates: {
+					canonical: "/app/vocabularies",
+				},
 			});
 
 			return { meta, links };

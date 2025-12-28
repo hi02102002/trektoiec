@@ -18,6 +18,9 @@ export const Route = createFileRoute("/_auth/login/")({
 				index: false,
 				follow: false,
 			},
+			alternates: {
+				canonical: "/login",
+			},
 		});
 
 		return { meta, links };

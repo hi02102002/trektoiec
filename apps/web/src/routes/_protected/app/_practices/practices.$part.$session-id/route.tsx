@@ -46,6 +46,9 @@ export const Route = createFileRoute(
 				index: false,
 				follow: false,
 			},
+			alternates: {
+				canonical: `/app/practices/${params.part}/${params["session-id"]}`,
+			},
 		});
 
 		return { meta, links };

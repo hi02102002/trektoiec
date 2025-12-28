@@ -55,6 +55,9 @@ export const Route = createFileRoute(
 				index: false,
 				follow: false,
 			},
+			alternates: {
+				canonical: `/app/practices/part-${part}`,
+			},
 		});
 
 		return { meta, links };

@@ -19,6 +19,9 @@ export const Route = createFileRoute("/_protected/app/_dashboard/grammar")({
 				index: false,
 				follow: false,
 			},
+			alternates: {
+				canonical: "/app/grammar",
+			},
 		});
 
 		return { meta, links };

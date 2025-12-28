@@ -23,6 +23,9 @@ export const Route = createFileRoute("/_protected/app/_dashboard/practices/")({
 				index: false,
 				follow: false,
 			},
+			alternates: {
+				canonical: "/app/practices",
+			},
 		});
 
 		return { meta, links };

@@ -13,6 +13,7 @@ import { scan } from "react-scan";
 import { NProgress } from "@/components/nprogress";
 import { Toaster } from "@/components/ui/sonner";
 import { getUser } from "@/functions/get-user";
+import { generateMetadata } from "@/lib/meta";
 import type { orpc } from "@/utils/orpc";
 import appCss from "../index.css?url";
 
@@ -23,40 +24,66 @@ export interface RouterAppContext {
 }
 
 export const Route = createRootRouteWithContext<RouterAppContext>()({
-	head: () => ({
-		meta: [
-			{
-				charSet: "utf-8",
+	head: () => {
+		const { meta, links: metaLinks } = generateMetadata({
+			charSet: "utf-8",
+			title: "TrekToeic",
+			description:
+				"Nền tảng học TOEIC trực tuyến, giúp bạn luyện tập hiệu quả và đạt điểm cao. Luyện tập theo từng phần, làm đề thi thử, học từ vựng và ngữ pháp.",
+			keywords: [
+				"TOEIC",
+				"học TOEIC",
+				"luyện thi TOEIC",
+				"TOEIC online",
+				"luyện TOEIC trực tuyến",
+				"đề thi TOEIC",
+				"từ vựng TOEIC",
+				"ngữ pháp TOEIC",
+			],
+			viewport: {
+				width: "device-width",
+				initialScale: 1,
 			},
-			{
-				name: "viewport",
-				content: "width=device-width, initial-scale=1",
+			openGraph: {
+				type: "website",
+				title: "TrekToeic - Chinh phục TOEIC hiệu quả",
+				description:
+					"Nền tảng học TOEIC trực tuyến, giúp bạn luyện tập hiệu quả và đạt điểm cao.",
+				siteName: "TrekToeic",
 			},
-			{
-				title: "My App",
+			twitter: {
+				card: "summary_large_image",
+				title: "TrekToeic - Chinh phục TOEIC hiệu quả",
+				description:
+					"Nền tảng học TOEIC trực tuyến, giúp bạn luyện tập hiệu quả và đạt điểm cao.",
 			},
-		],
-		links: [
-			{
-				rel: "stylesheet",
-				href: "https://unpkg.com/nprogress@0.2.0/nprogress.css",
-			},
-			{
-				rel: "stylesheet",
-				href: appCss,
-			},
-		],
-		scripts: [
-			{
-				async: true,
-				src: "https://www.googletagmanager.com/gtag/js?id=G-11Z12V1WLY",
-			},
-			{
-				id: "google-analytics",
-				src: "/google-analytics.js",
-			},
-		],
-	}),
+		});
+
+		return {
+			meta,
+			links: [
+				...metaLinks,
+				{
+					rel: "stylesheet",
+					href: "https://unpkg.com/nprogress@0.2.0/nprogress.css",
+				},
+				{
+					rel: "stylesheet",
+					href: appCss,
+				},
+			],
+			scripts: [
+				{
+					async: true,
+					src: "https://www.googletagmanager.com/gtag/js?id=G-11Z12V1WLY",
+				},
+				{
+					id: "google-analytics",
+					src: "/google-analytics.js",
+				},
+			],
+		};
+	},
 	async beforeLoad({ context }) {
 		const user = await context.queryClient.ensureQueryData({
 			queryKey: ["current-user"],
@@ -80,7 +107,7 @@ function RootDocument() {
 	});
 
 	return (
-		<html lang="en">
+		<html lang="vi">
 			<head>
 				<HeadContent />
 			</head>

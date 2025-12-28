@@ -64,6 +64,40 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
 			links: [
 				...metaLinks,
 				{
+					rel: "icon",
+					type: "image/x-icon",
+					href: "/favicon.ico",
+				},
+				{
+					rel: "icon",
+					type: "image/png",
+					sizes: "16x16",
+					href: "/favicon-16x16.png",
+				},
+				{
+					rel: "icon",
+					type: "image/png",
+					sizes: "32x32",
+					href: "/favicon-32x32.png",
+				},
+				{
+					rel: "icon",
+					type: "image/png",
+					sizes: "192x192",
+					href: "/favicon-192x192.png",
+				},
+				{
+					rel: "icon",
+					type: "image/png",
+					sizes: "512x512",
+					href: "/favicon-512x512.png",
+				},
+				{
+					rel: "apple-touch-icon",
+					sizes: "180x180",
+					href: "/apple-touch-icon.png",
+				},
+				{
 					rel: "stylesheet",
 					href: "https://unpkg.com/nprogress@0.2.0/nprogress.css",
 				},

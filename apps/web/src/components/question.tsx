@@ -291,8 +291,6 @@ export const QuestionSubText = ({
 	const { sub } = useQuestionSubContext();
 	const { question } = useQuestionContext();
 
-	console.log(sub);
-
 	const content = useMemo(() => {
 		if (PART_WITHOUT_SUB_POS.has(question.part)) {
 			if (PART_WITHOUT_TEXT.has(question.part)) {
@@ -314,8 +312,6 @@ export const QuestionSubText = ({
 	}, [sub, question, externalPos]);
 
 	const isShowPos = !PART_WITHOUT_SUB_POS.has(question.part);
-
-	console.log(content, isShowPos);
 
 	return isShowPos || content ? (
 		<div className="space-y-2">

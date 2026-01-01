@@ -19,6 +19,7 @@ export const createOpenGraphData = (
 			url,
 			title,
 			description,
+			images: "/og.png",
 		},
 		twitter: {
 			card: "summary_large_image" as const,

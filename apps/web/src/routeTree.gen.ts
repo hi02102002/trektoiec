@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as OgDotpngRouteImport } from './routes/og[.]png'
 import { Route as ProtectedRouteImport } from './routes/_protected'
 import { Route as AuthRouteImport } from './routes/_auth'
 import { Route as ApiSplatRouteImport } from './routes/api/$'
@@ -34,6 +35,11 @@ import { Route as ProtectedAppPracticesPracticesPartSessionIdResultsIndexRouteRo
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OgDotpngRoute = OgDotpngRouteImport.update({
+  id: '/og.png',
+  path: '/og.png',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProtectedRoute = ProtectedRouteImport.update({
@@ -147,6 +153,7 @@ const ProtectedAppPracticesPracticesPartSessionIdResultsIndexRouteRoute =
   )
 
 export interface FileRoutesByFullPath {
+  '/og.png': typeof OgDotpngRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/$': typeof ApiSplatRoute
   '/about': typeof marketingMarketingAboutRouteRoute
@@ -165,6 +172,7 @@ export interface FileRoutesByFullPath {
   '/app/practices/$part/$session-id/results': typeof ProtectedAppPracticesPracticesPartSessionIdResultsIndexRouteRoute
 }
 export interface FileRoutesByTo {
+  '/og.png': typeof OgDotpngRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/$': typeof ApiSplatRoute
   '/about': typeof marketingMarketingAboutRouteRoute
@@ -186,6 +194,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_auth': typeof AuthRouteWithChildren
   '/_protected': typeof ProtectedRouteWithChildren
+  '/og.png': typeof OgDotpngRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/(marketing)/_marketing': typeof marketingMarketingRouteWithChildren
   '/api/$': typeof ApiSplatRoute
@@ -209,6 +218,7 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
+    | '/og.png'
     | '/sitemap.xml'
     | '/api/$'
     | '/about'
@@ -227,6 +237,7 @@ export interface FileRouteTypes {
     | '/app/practices/$part/$session-id/results'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/og.png'
     | '/sitemap.xml'
     | '/api/$'
     | '/about'
@@ -247,6 +258,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/_auth'
     | '/_protected'
+    | '/og.png'
     | '/sitemap.xml'
     | '/(marketing)/_marketing'
     | '/api/$'
@@ -271,6 +283,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   AuthRoute: typeof AuthRouteWithChildren
   ProtectedRoute: typeof ProtectedRouteWithChildren
+  OgDotpngRoute: typeof OgDotpngRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   marketingMarketingRoute: typeof marketingMarketingRouteWithChildren
   ApiSplatRoute: typeof ApiSplatRoute
@@ -287,6 +300,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/og.png': {
+      id: '/og.png'
+      path: '/og.png'
+      fullPath: '/og.png'
+      preLoaderRoute: typeof OgDotpngRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_protected': {
@@ -504,6 +524,7 @@ const marketingMarketingRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRouteWithChildren,
   ProtectedRoute: ProtectedRouteWithChildren,
+  OgDotpngRoute: OgDotpngRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   marketingMarketingRoute: marketingMarketingRouteWithChildren,
   ApiSplatRoute: ApiSplatRoute,

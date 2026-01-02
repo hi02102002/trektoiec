@@ -1,6 +1,7 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import type { Part } from "@trektoeic/schemas/part-section-schema";
+import { getTime } from "@trektoeic/utils/get-time";
 import z from "zod";
 import { AppContent, AppHeader } from "@/components/layouts/app";
 import { PartInstructions } from "@/components/part-instructions";
@@ -71,6 +72,9 @@ export const Route = createFileRoute(
 		"Cache-Control":
 			"public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
 		"CDN-Cache-Control": "max-age=3600",
+	}),
+	staleTime: getTime({
+		hours: 1,
 	}),
 });
 

@@ -75,7 +75,7 @@ const getQuestionsByIds = withDb((db) => async (ids: string[]) => {
 		.from(questions)
 		.leftJoin(subQuestions, eq(questions.id, subQuestions.questionId))
 		.where(and(inArray(questions.id, ids)))
-		.orderBy(arrayPosition(ids, questions.id))
+		.orderBy(ids.length > 0 ? arrayPosition(ids, questions.id) : sql`NULL`)
 		.groupBy(questions.id);
 
 	return z.array(QuestionWithSubsSchema).parse(records);

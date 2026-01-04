@@ -8,6 +8,7 @@ import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { useAnswers, useCurrentQuestion } from "@/stores/attempt";
 
 const PART_HAVE_MULTIPLE_SUBS = new Set([3, 4, 6, 7]);
+const SCROLL_DELAY_MS = 100;
 
 const Route = getRouteApi(
 	"/_protected/app/_practices/practices/$part/$session-id/",
@@ -116,7 +117,7 @@ export const QuestionsNavigator = ({
 		setTimeout(() => {
 			const el = document.getElementById(`question-sub-${questionId}`);
 			el?.scrollIntoView({ behavior: "smooth", block: "center" });
-		}, 100);
+		}, SCROLL_DELAY_MS);
 	};
 
 	return (

@@ -17,7 +17,7 @@ export const PracticeTimer = () => {
 			{search?.mode === "timed" ? (
 				<Timer
 					mode="down"
-					duration={1000}
+					duration={search?.duration ?? 0}
 					onDone={handleSubmit}
 					className="sm:absolute sm:left-1/2 sm:-translate-x-1/2"
 				/>

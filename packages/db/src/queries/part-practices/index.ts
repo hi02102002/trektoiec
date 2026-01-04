@@ -103,17 +103,6 @@ const getPartPracticeHistoryById = withDbAndUser(
 				contents.map((c) => c.questionId),
 			);
 
-			const hashedSubQuestions = new Map<
-				string,
-				(typeof questions)[0]["subs"]
-			>();
-
-			questions.forEach((question) => {
-				question.subs.forEach((sub) => {
-					hashedSubQuestions.set(sub.id, question.subs);
-				});
-			});
-
 			return {
 				history: PartPracticeHistorySchema.parse(record),
 				questions,

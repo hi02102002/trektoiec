@@ -1,6 +1,7 @@
 import { index, jsonb, pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { DEFAULT_SCHEMA } from "../constants";
 import { user } from "./auth";
+import { sql } from "drizzle-orm";
 
 export const history = pgTable(
 	"histories",
@@ -22,10 +23,8 @@ export const history = pgTable(
 			tb.userId,
 			tb.action,
 		),
-		idxUserIdActionMetadata: index("idx_histories_user_id_action_metadata").on(
-			tb.userId,
-			tb.action,
-			tb.metadata,
-		),
+		idxUserIdActionMetadataPart: index(
+			"idx_histories_user_id_action_metadata_part",
+		).on(tb.userId, tb.action, sql`(${tb.metadata}->>'part')`),
 	}),
 );

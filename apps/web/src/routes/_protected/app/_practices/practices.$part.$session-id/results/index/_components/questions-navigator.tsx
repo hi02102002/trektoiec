@@ -5,6 +5,8 @@ import {
 	Navigator,
 } from "@/components/practices/navigator";
 import { useAnswers, useCurrentQuestion } from "@/stores/attempt";
+import { ResultMainScore } from "./result-main-score";
+import { ResultTimeStats } from "./result-time-stats";
 
 const PART_HAVE_MULTIPLE_SUBS = new Set([3, 4, 6, 7]);
 
@@ -24,6 +26,20 @@ export const QuestionsNavigator = () => {
 		return answer?.isFlagged ?? false;
 	};
 
+	const getStatus = (subQuestionId: string): ButtonNavigatorStatus => {
+		const answer = answers[subQuestionId];
+
+		if (!answer || answer.choice === "") {
+			return "unanswered";
+		}
+
+		if (answer.isCorrect) {
+			return "correct";
+		}
+
+		return "wrong";
+	};
+
 	const mappedQuestions: Record<string, { status: ButtonNavigatorStatus }> =
 		(() => {
 			const results = {} as Record<
@@ -34,7 +50,7 @@ export const QuestionsNavigator = () => {
 			questions.forEach((q) => {
 				q.subs.forEach((sub) => {
 					results[sub.id] = {
-						status: "wrong",
+						status: getStatus(sub.id),
 						flagged: isFlagged(sub.id),
 					};
 				});
@@ -86,6 +102,12 @@ export const QuestionsNavigator = () => {
 			}}
 			className="fixed top-16 h-screen overflow-y-auto border-input border-r"
 			mode="result"
+			extra={
+				<>
+					<ResultMainScore />
+					<ResultTimeStats />
+				</>
+			}
 		/>
 	);
 };

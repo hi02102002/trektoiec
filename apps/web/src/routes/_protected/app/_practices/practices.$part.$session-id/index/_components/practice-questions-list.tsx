@@ -155,6 +155,9 @@ export const PracticeQuestionsList = () => {
 
 										const { questionId } = opts;
 										questionTimer.markAsAnswered(questionId);
+
+										console.log("Setting answer:", opts); // Debug log
+
 										answers.setAnswer({
 											choice: opts.choice,
 											isCorrect: opts.isCorrect ?? false,

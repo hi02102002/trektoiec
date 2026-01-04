@@ -14,7 +14,7 @@ export const PracticeActions = () => {
 					onClick={handleSubmit}
 					className="text-xs sm:text-sm"
 				>
-					Kết thúc
+					Nộp bài
 				</Button>
 			</div>
 			<LoadingOverlay open={isPending} message="Bạn chờ chút nhé..." />

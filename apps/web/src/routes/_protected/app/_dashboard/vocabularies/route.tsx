@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { ComingSoon } from "@/components/coming-soon";
 import { createOpenGraphData, generateMetadata } from "@/lib/meta";
 
 export const Route = createFileRoute("/_protected/app/_dashboard/vocabularies")(
@@ -36,5 +37,5 @@ export const Route = createFileRoute("/_protected/app/_dashboard/vocabularies")(
 );
 
 function RouteComponent() {
-	return <div>Hello "/_protected/app/_dashboard/vocabularies"!</div>;
+	return <ComingSoon />;
 }

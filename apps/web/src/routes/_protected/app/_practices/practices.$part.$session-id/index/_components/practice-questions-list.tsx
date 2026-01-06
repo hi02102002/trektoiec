@@ -84,13 +84,14 @@ export const PracticeQuestionsList = () => {
 	return (
 		<div
 			className={cn("mx-auto h-full max-w-3xl space-y-8 pb-20", {
-				"flex h-[calc(100svh_-_4rem)] max-w-full space-y-0": isHorizontalLayout,
+				"lg:!flex-row flex h-[calc(100svh_-_4rem)] max-w-full flex-col space-y-0":
+					isHorizontalLayout,
 			})}
 		>
 			<QuestionProvider question={currentQuestion}>
 				<div
 					className={cn("space-y-3 p-4 pb-0", {
-						"w-full max-w-3xl overflow-auto pb-4": isHorizontalLayout,
+						"w-full overflow-auto pb-4 lg:max-w-3xl": isHorizontalLayout,
 					})}
 					ref={leftSideRef}
 				>
